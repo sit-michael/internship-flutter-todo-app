@@ -7,6 +7,12 @@ abstract class TaskEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class InitTaskEvent extends TaskEvent {
+  const InitTaskEvent();
+  @override
+  List<Object> get props => [];
+}
+
 class AddTaskEvent extends TaskEvent {
   final Task task;
 

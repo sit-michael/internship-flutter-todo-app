@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import '../repository/task_repository.dart';
 
@@ -19,6 +21,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     on<RemoveTaskEvent>(_onRemoveTask);
     on<EditTaskEvent>(_onEditTask);
     on<RestoreTaskEvent>(_onRestoreTask);
+    on<InitTaskEvent>(_onInit);
+
+    add(const InitTaskEvent());
   }
 
   Future<void> _onAddTask(AddTaskEvent event, Emitter<TaskState> emit) async {
@@ -99,5 +104,10 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final newList = await _repo.get();
 
     emit(TaskState(allTasks: newList));
+  }
+
+  Future<void> _onInit(event, Emitter<TaskState> emit) async {
+    final tasks = await _repo.get();
+    emit(TaskState(allTasks: tasks));
   }
 }
