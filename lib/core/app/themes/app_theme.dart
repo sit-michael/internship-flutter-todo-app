@@ -1,58 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
 
-enum AppTheme {
-  lightTheme,
-  darkTheme,
-}
+import '../styles/app_text_style.dart';
+import 'app_button_theme.dart';
 
-class AppThemes {
-  static final appThemeData = {
-    AppTheme.darkTheme: ThemeData(
-      primarySwatch: Colors.grey,
-      primaryColor: Colors.black,
-      brightness: Brightness.dark,
-      backgroundColor: const Color(0xFF212121),
-      dividerColor: Colors.black54,
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Colors.white,
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(Colors.white),
-        ),
-      ),
-      textTheme: const TextTheme(
-        subtitle1: TextStyle(color: Colors.white),
-      ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.grey, unselectedItemColor: Colors.white),
-    ),
+class AppTheme {
+  AppTheme._();
 
-    //
-    //
-
-    AppTheme.lightTheme: ThemeData(
-      primarySwatch: Colors.grey,
-      primaryColor: Colors.white,
-      brightness: Brightness.light,
-      backgroundColor: const Color(0xFFE5E5E5),
-      dividerColor: const Color(0xff757575),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        backgroundColor: Colors.black,
-        foregroundColor: Colors.white,
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.all(Colors.black),
-        ),
-      ),
-      textTheme: const TextTheme(
-        subtitle1: TextStyle(color: Colors.black),
-      ),
-      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.grey,
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.white),
-    ),
-  };
+  static ThemeData getDefaultTheme() {
+    return ThemeData(
+      textTheme: AppTextStyle.theme,
+      elevatedButtonTheme: AppButtonTheme.elevated,
+      outlinedButtonTheme: AppButtonTheme.outlined,
+      colorScheme: AppColor.scheme,
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
 
 import '../../domain/bloc_exports.dart';
 import '../common/custom_drawer.dart';
@@ -16,6 +17,8 @@ class RecycleBinScreen extends StatelessWidget {
         final taskList = state.removedTasks;
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: AppColor.background,
+            foregroundColor: AppColor.white,
             title: const Text('Tasks App'),
             actions: [
               PopupMenuButton(

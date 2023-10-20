@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import '../../domain/bloc_exports.dart';
 import '../main/tabs_screen.dart';
 
-class SpalshScreen extends StatefulWidget {
+class SplashScreen extends StatefulWidget {
   static const id = '/';
-  const SpalshScreen({super.key});
+  const SplashScreen({super.key});
 
   @override
-  State<SpalshScreen> createState() => _SpalshScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SpalshScreenState extends State<SpalshScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   void onNextPage() {
     Timer(const Duration(milliseconds: 2000), () {
       Navigator.of(context).pushReplacementNamed(TabsScreen.id);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
 import 'sub_pages/pending_tasks_screen.dart';
 
 import 'add_task/add_task_screen.dart';
@@ -28,6 +29,8 @@ class _TabsScreenState extends State<TabsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColor.background,
+        foregroundColor: AppColor.white,
         title: Text(_pageDetails[_selectedPageIndex]['title']),
         actions: [
           IconButton(
@@ -59,7 +62,7 @@ class _TabsScreenState extends State<TabsScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
-            label: 'Favourit Task',
+            label: 'Favourite Task',
           ),
         ],
       ),

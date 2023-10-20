@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:udemy_flutter_bloc_tasks/core/app/assets/app_image.dart';
+import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
 
 import '../../core/app/router/app_routes_export.dart';
 import '../../domain/bloc_exports.dart';
-import 'dark_mode_switch.dart';
 import 'version_label.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -15,15 +16,9 @@ class CustomDrawer extends StatelessWidget {
           child: Column(
         children: [
           DrawerHeader(
-            decoration: const BoxDecoration(color: Colors.grey),
+            decoration: const BoxDecoration(color: AppColor.background),
             child: SizedBox(
-              width: double.infinity,
-              child: Text(
-                'Task Drawer',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
-            ),
+                width: double.infinity, child: Image.asset(AppImage.logo)),
           ),
           ListTile(
             onTap: () =>
@@ -50,8 +45,6 @@ class CustomDrawer extends StatelessWidget {
             ),
           ),
           const Divider(),
-          const Spacer(flex: 3),
-          const DarkModeSwitch(),
           const Spacer(flex: 1),
           const Padding(
             padding: EdgeInsets.all(8.0),
