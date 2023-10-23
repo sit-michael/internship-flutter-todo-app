@@ -8,12 +8,11 @@ class AppInputTheme {
   AppInputTheme._();
   static InputDecorationTheme getTheme() {
     return InputDecorationTheme(
-      floatingLabelStyle: const TextStyle(color: AppColor.black),
       labelStyle: AppTextStyle.theme.labelMedium,
       hintStyle: AppTextStyle.theme.labelSmall,
       contentPadding: allPadding8,
       enabledBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: AppColor.grey200),
+        borderSide: BorderSide(color: AppColor.grey400),
         borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       errorBorder: const OutlineInputBorder(

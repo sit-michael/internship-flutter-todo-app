@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sit_todos/core/app/styles/app_color.dart';
 
 import '../../../domain/bloc_exports.dart';
 import '../../common/task_list.dart';
@@ -8,7 +9,7 @@ class FavouriteTasksScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-        return BlocBuilder<TaskBloc, TaskState>(
+    return BlocBuilder<TaskBloc, TaskState>(
       builder: (context, state) {
         final taskList = state.favoriteTasks;
         return Column(
@@ -16,7 +17,9 @@ class FavouriteTasksScreen extends StatelessWidget {
           children: [
             Center(
               child: Chip(
+                backgroundColor: AppColor.grey300,
                 label: Text(
+                  style: const TextStyle(color: AppColor.white),
                   '${taskList.length} Tasks',
                 ),
               ),

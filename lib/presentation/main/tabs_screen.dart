@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
+import 'package:sit_todos/core/app/styles/app_color.dart';
 import 'sub_pages/pending_tasks_screen.dart';
 
 import 'add_task/add_task_screen.dart';
@@ -31,24 +31,25 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         backgroundColor: AppColor.background,
         foregroundColor: AppColor.white,
-        title: Text(_pageDetails[_selectedPageIndex]['title']),
-        actions: [
-          IconButton(
-            onPressed: () => _addTask(context),
-            icon: const Icon(Icons.add),
-          )
-        ],
+        title: Text(
+          _pageDetails[_selectedPageIndex]['title'],
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
       ),
       drawer: const CustomDrawer(),
       floatingActionButton: _selectedPageIndex == 0
           ? FloatingActionButton(
               onPressed: () => _addTask(context),
               tooltip: 'Add Task',
+              backgroundColor: AppColor.primary,
               child: const Icon(Icons.add),
             )
           : null,
       body: _pageDetails[_selectedPageIndex]['pageName'],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColor.background,
+        selectedItemColor: AppColor.primary,
+        unselectedItemColor: AppColor.grey200,
         currentIndex: _selectedPageIndex,
         onTap: (value) => setState(() => _selectedPageIndex = value),
         items: const [

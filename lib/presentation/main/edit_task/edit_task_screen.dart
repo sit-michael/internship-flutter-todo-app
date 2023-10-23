@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sit_todos/generated/export.dart';
 import '../../../domain/bloc_exports.dart';
 
 import '../../../domain/task/entity/task.dart';
@@ -35,56 +36,58 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(children: [
-        const Text('Edit Task', style: TextStyle(fontSize: 24)),
-        const SizedBox(height: 10),
-        TextField(
-          autofocus: true,
-          controller: _titleController,
-          decoration: const InputDecoration(
-            labelText: 'Title',
-            border: OutlineInputBorder(),
+      padding: allPadding24,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Edit Task',
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          autofocus: true,
-          controller: _descriptionController,
-          minLines: 3,
-          maxLines: 5,
-          decoration: const InputDecoration(
-            labelText: 'Description',
-            border: OutlineInputBorder(),
+          verticalMargin24,
+          TextField(
+            autofocus: true,
+            controller: _titleController,
+            decoration: const InputDecoration(
+              labelText: 'Title',
+            ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('cancel'),
+          const SizedBox(height: 10),
+          TextField(
+            autofocus: true,
+            controller: _descriptionController,
+            minLines: 3,
+            maxLines: 5,
+            decoration: const InputDecoration(
+              labelText: 'Description',
             ),
-            ElevatedButton(
-              onPressed: () {
-                var editedTask = widget.current.copyWith(
-                  title: _titleController.text,
-                  description: _descriptionController.text,
-                  date: DateTime.now(),
-                  isDone: false,
-                  isDeleted: false,
-                );
-                context
-                    .read<TaskBloc>()
-                    .add(EditTaskEvent(editedTask));
-                Navigator.pop(context);
-              },
-              child: const Text('save'),
-            ),
-          ],
-        ),
-      ]),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  var editedTask = widget.current.copyWith(
+                    title: _titleController.text,
+                    description: _descriptionController.text,
+                    date: DateTime.now(),
+                    isDone: false,
+                    isDeleted: false,
+                  );
+                  context.read<TaskBloc>().add(EditTaskEvent(editedTask));
+                  Navigator.pop(context);
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

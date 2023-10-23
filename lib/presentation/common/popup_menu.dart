@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sit_todos/core/app/styles/app_color.dart';
 import '../../domain/task/entity/task.dart';
 
 class PopupMenu extends StatelessWidget {
@@ -27,8 +28,14 @@ class PopupMenu extends StatelessWidget {
                       Navigator.of(context).pop();
                       onEdit();
                     },
-                    icon: const Icon(Icons.edit),
-                    label: const Text('Edit'),
+                    icon: const Icon(
+                      Icons.edit,
+                      color: AppColor.grey400,
+                    ),
+                    label: Text(
+                      'Edit',
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                 ),
                 PopupMenuItem(
@@ -37,12 +44,23 @@ class PopupMenu extends StatelessWidget {
                       Navigator.of(context).pop();
                       onLike();
                     },
-                    icon: Icon(task.isFavorite
-                        ? Icons.bookmark_remove
-                        : Icons.bookmark_add_outlined),
-                    label: Text(task.isFavorite
-                        ? 'Remove from\nFavorite'
-                        : 'Add to\nFavorite'),
+                    icon: Icon(
+                      task.isFavorite
+                          ? Icons.bookmark_remove
+                          : Icons.bookmark_add_outlined,
+                      color: AppColor.highlight,
+                    ),
+                    label: FittedBox(
+                      child: Text(
+                        task.isFavorite
+                            ? 'Remove from\nFavorite'
+                            : 'Add to\nFavorite',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: AppColor.highlight),
+                      ),
+                    ),
                   ),
                 ),
                 PopupMenuItem(
@@ -51,8 +69,17 @@ class PopupMenu extends StatelessWidget {
                       Navigator.of(context).pop();
                       onDelete();
                     },
-                    icon: const Icon(Icons.delete),
-                    label: const Text('Delete'),
+                    icon: const Icon(
+                      Icons.delete,
+                      color: AppColor.error,
+                    ),
+                    label: Text(
+                      'Delete',
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(color: AppColor.error),
+                    ),
                   ),
                 ),
               ]
@@ -63,8 +90,14 @@ class PopupMenu extends StatelessWidget {
                       Navigator.of(context).pop();
                       onRestore();
                     },
-                    icon: const Icon(Icons.restore_from_trash),
-                    label: const Text('Restore'),
+                    icon: const Icon(
+                      Icons.restore_from_trash,
+                      color: AppColor.primary,
+                    ),
+                    label: const Text(
+                      'Restore',
+                      style: TextStyle(color: AppColor.primary),
+                    ),
                   ),
                 ),
                 PopupMenuItem(
@@ -73,8 +106,14 @@ class PopupMenu extends StatelessWidget {
                       Navigator.of(context).pop();
                       onDelete();
                     },
-                    icon: const Icon(Icons.delete_forever),
-                    label: const Text('Delete forever'),
+                    icon: const Icon(
+                      Icons.delete_forever,
+                      color: AppColor.error,
+                    ),
+                    label: const Text(
+                      'Delete forever',
+                      style: TextStyle(color: AppColor.error),
+                    ),
                   ),
                 ),
               ],

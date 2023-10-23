@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:sit_todos/core/app/styles/app_color.dart';
 
 import '../../domain/bloc_exports.dart';
 import '../../domain/task/entity/task.dart';
@@ -18,7 +19,10 @@ class TaskTile extends ExpansionPanelRadio {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(task.isFavorite ? Icons.star : Icons.star_outline),
+                      Icon(
+                        task.isFavorite ? Icons.star : Icons.star_outline,
+                        color: AppColor.highlight,
+                      ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Column(
@@ -46,9 +50,16 @@ class TaskTile extends ExpansionPanelRadio {
                   children: [
                     Checkbox(
                       onChanged: !task.isDeleted
-                          ? (_) => context
-                              .read<TaskBloc>()
-                              .add(UpdateTaskDoneStateEvent(task))
+                          ? (checked) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      content: Text((checked ?? false)
+                                          ? 'Finished Task'
+                                          : 'Resetted Task')));
+                              context
+                                  .read<TaskBloc>()
+                                  .add(UpdateTaskDoneStateEvent(task));
+                            }
                           : null,
                       value: task.isDone,
                     ),
@@ -104,7 +115,7 @@ class TaskTile extends ExpansionPanelRadio {
       context: context,
       isScrollControlled: true,
       builder: (context) => SingleChildScrollView(
-        child: Container(
+        child: Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: EditTaskScreen(current: task),

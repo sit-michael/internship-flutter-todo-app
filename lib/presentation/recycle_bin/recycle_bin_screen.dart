@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
+import 'package:sit_todos/core/app/styles/app_color.dart';
 
 import '../../domain/bloc_exports.dart';
 import '../common/custom_drawer.dart';
@@ -19,7 +19,10 @@ class RecycleBinScreen extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: AppColor.background,
             foregroundColor: AppColor.white,
-            title: const Text('Tasks App'),
+            title: Text(
+              'Recycle Bin',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
             actions: [
               PopupMenuButton(
                 itemBuilder: (context) => [
@@ -28,8 +31,17 @@ class RecycleBinScreen extends StatelessWidget {
                       onPressed: () => context
                           .read<TaskBloc>()
                           .add(const DeleteAllTasksEvent()),
-                      icon: const Icon(Icons.delete_forever),
-                      label: const Text('Delete all tasks'),
+                      icon: const Icon(
+                        Icons.delete_forever,
+                        color: AppColor.error,
+                      ),
+                      label: Text(
+                        'Delete all tasks',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: AppColor.error),
+                      ),
                     ),
                   ),
                 ],
@@ -41,7 +53,9 @@ class RecycleBinScreen extends StatelessWidget {
             children: [
               Center(
                 child: Chip(
+                  backgroundColor: AppColor.grey300,
                   label: Text(
+                    style: const TextStyle(color: AppColor.white),
                     '${taskList.length} Tasks',
                   ),
                 ),

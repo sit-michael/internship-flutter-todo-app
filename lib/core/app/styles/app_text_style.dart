@@ -53,18 +53,17 @@ class AppTextStyle {
 
   //NOT IN USE!
   static const TextStyle _headlineLarge = TextStyle(
-    fontSize: 32,
+    fontSize: 24,
     fontFamily: _standardFont,
-    fontWeight: FontWeight.w400,
-    color: AppColor.error,
+    fontWeight: FontWeight.bold,
+    color: AppColor.white,
   );
 
-  //NOT IN USE!
   static const TextStyle _headlineMedium = TextStyle(
-    fontSize: 28,
+    fontSize: 24,
     fontFamily: _standardFont,
     fontWeight: FontWeight.w400,
-    color: AppColor.error,
+    color: AppColor.grey600,
   );
 
   //NOT IN USE!
@@ -88,7 +87,7 @@ class AppTextStyle {
     fontSize: 12,
     fontFamily: _standardFont,
     fontWeight: FontWeight.w400,
-    color: AppColor.error,
+    color: AppColor.grey600,
   );
 
   //NOT IN USE!
@@ -112,7 +111,7 @@ class AppTextStyle {
     fontSize: 14,
     fontFamily: _standardFont,
     fontWeight: FontWeight.w400,
-    color: AppColor.error,
+    color: AppColor.grey400,
   );
 
   //NOT IN USE!

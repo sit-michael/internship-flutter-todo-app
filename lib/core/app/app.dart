@@ -11,20 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => TaskBloc(locator())),
-        BlocProvider(create: (context) => SettingsBloc(locator())),
-      ],
-      child: BlocBuilder<SettingsBloc, SettingsState>(
-        builder: (context, state) {
-          return MaterialApp(
-            title: 'To-Do',
-            theme: AppTheme.getDefaultTheme(),
-            onGenerateRoute: AppRouter().onGenerateRoute,
-            initialRoute: SplashScreen.id,
-          );
-        },
+    return BlocProvider(
+      create: (context) => TaskBloc(locator()),
+      child: MaterialApp(
+        title: 'Todo',
+        theme: AppTheme.getDefaultTheme(),
+        onGenerateRoute: AppRouter().onGenerateRoute,
+        initialRoute: SplashScreen.id,
       ),
     );
   }

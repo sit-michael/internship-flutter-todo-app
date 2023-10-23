@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_flutter_bloc_tasks/generated/export.dart';
+import 'package:sit_todos/generated/export.dart';
 
 import '../styles/app_color.dart';
 import '../styles/app_text_style.dart';
@@ -9,8 +9,8 @@ class AppButtonTheme {
   static ElevatedButtonThemeData get elevated {
     return ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        foregroundColor: AppColor.scheme.onPrimary,
-        backgroundColor: AppColor.primary,
+        foregroundColor: AppColor.scheme.onBackground,
+        backgroundColor: AppColor.background,
         fixedSize: const Size(double.infinity, AppSize.s48),
         textStyle: AppTextStyle.theme.labelMedium,
         shape: const RoundedRectangleBorder(
@@ -33,6 +33,17 @@ class AppButtonTheme {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
+      ),
+    );
+  }
+
+  static TextButtonThemeData get text {
+    return TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: AppColor.background,
+        fixedSize: const Size(double.infinity, AppSize.s48),
+        backgroundColor: Colors.transparent,
+        textStyle: AppTextStyle.theme.labelMedium,
       ),
     );
   }

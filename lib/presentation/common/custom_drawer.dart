@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:udemy_flutter_bloc_tasks/core/app/assets/app_image.dart';
-import 'package:udemy_flutter_bloc_tasks/core/app/styles/app_color.dart';
+import 'package:sit_todos/core/app/assets/app_image.dart';
+import 'package:sit_todos/core/app/styles/app_color.dart';
 
 import '../../core/app/router/app_routes_export.dart';
 import '../../domain/bloc_exports.dart';
@@ -17,8 +17,14 @@ class CustomDrawer extends StatelessWidget {
         children: [
           DrawerHeader(
             decoration: const BoxDecoration(color: AppColor.background),
-            child: SizedBox(
-                width: double.infinity, child: Image.asset(AppImage.logo)),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(
+                  AppImage.logo,
+                ),
+              ),
+            ),
           ),
           ListTile(
             onTap: () =>
