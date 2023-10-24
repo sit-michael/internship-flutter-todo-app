@@ -16,20 +16,20 @@ class EditTaskScreen extends StatefulWidget {
 }
 
 class _EditTaskScreenState extends State<EditTaskScreen> {
-  late final TextEditingController _titleController;
-  late final TextEditingController _descriptionController;
+  late final TextEditingController _controller1;
+  late final TextEditingController _controller2;
   @override
   void initState() {
-    _titleController = TextEditingController(text: widget.current.title);
-    _descriptionController =
-        TextEditingController(text: widget.current.description);
+    //TODO ML: (Ticket BUGT-2325) switch description and title
+    _controller1 = TextEditingController(text: widget.current.description);
+    _controller2 = TextEditingController(text: widget.current.title);
     super.initState();
   }
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
+    _controller1.dispose();
+    _controller2.dispose();
     super.dispose();
   }
 
@@ -47,7 +47,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
           verticalMargin24,
           TextField(
             autofocus: true,
-            controller: _titleController,
+            controller: _controller1,
             decoration: const InputDecoration(
               labelText: 'Title',
             ),
@@ -55,7 +55,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
           const SizedBox(height: 10),
           TextField(
             autofocus: true,
-            controller: _descriptionController,
+            controller: _controller2,
             minLines: 3,
             maxLines: 5,
             decoration: const InputDecoration(
@@ -73,8 +73,8 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
               ElevatedButton(
                 onPressed: () {
                   var editedTask = widget.current.copyWith(
-                    title: _titleController.text,
-                    description: _descriptionController.text,
+                    title: _controller1.text,
+                    description: _controller2.text,
                     date: DateTime.now(),
                     isDone: false,
                     isDeleted: false,

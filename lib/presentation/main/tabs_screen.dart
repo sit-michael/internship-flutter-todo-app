@@ -4,8 +4,6 @@ import 'sub_pages/pending_tasks_screen.dart';
 
 import 'add_task/add_task_screen.dart';
 import 'sub_pages/complete_tasks_screen.dart';
-import '../common/custom_drawer.dart';
-import 'sub_pages/favourite_tasks_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   const TabsScreen({super.key});
@@ -20,28 +18,26 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, dynamic>> _pageDetails = [
     {'pageName': const PendingTasksScreen(), 'title': 'Pending Tasks'},
     {'pageName': const CompleteTasksScreen(), 'title': 'Complete Tasks'},
-    {'pageName': const FavouriteTasksScreen(), 'title': 'Favourite Tasks'},
+    //TODO ML: (Ticket FXT-106) Add fav page
   ];
 
   var _selectedPageIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    // TODO ML: Add drawer (Ticket FXT-4711)
+    // TODO ML: Add AppBar title (Ticket FXT-5214)
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.background,
         foregroundColor: AppColor.white,
-        title: Text(
-          _pageDetails[_selectedPageIndex]['title'],
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
       ),
-      drawer: const CustomDrawer(),
       floatingActionButton: _selectedPageIndex == 0
+          // TODO ML: Adjust FAB colour (Ticket BUGT-1734)
+
           ? FloatingActionButton(
               onPressed: () => _addTask(context),
               tooltip: 'Add Task',
-              backgroundColor: AppColor.primary,
               child: const Icon(Icons.add),
             )
           : null,
@@ -61,10 +57,7 @@ class _TabsScreenState extends State<TabsScreen> {
             icon: Icon(Icons.done),
             label: 'Completed Task',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favourite Task',
-          ),
+          //TODO ML: (Ticket FXT-106) Add fav bottombar icon
         ],
       ),
     );
