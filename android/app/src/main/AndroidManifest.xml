@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="schwarz.it.sit_todos">
+    package="schwarz.it.internship_todos_app">
    <application
         android:label="Todos"
         android:name="${applicationName}"

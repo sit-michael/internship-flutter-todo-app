@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sit_todos/core/app/styles/app_color.dart';
+import 'package:internship_todos_app/core/app/styles/app_color.dart';
 import 'sub_pages/pending_tasks_screen.dart';
 
 import 'add_task/add_task_screen.dart';

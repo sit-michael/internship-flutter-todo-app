@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sit_todos/generated/export.dart';
+import 'package:internship_todos_app/generated/export.dart';
 import '../../../domain/bloc_exports.dart';
 
 import '../../../domain/task/entity/task.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sit_todos/core/app/assets/app_image.dart';
-import 'package:sit_todos/core/app/styles/app_color.dart';
+import 'package:internship_todos_app/core/app/assets/app_image.dart';
+import 'package:internship_todos_app/core/app/styles/app_color.dart';
 
 import '../../core/app/router/app_routes_export.dart';
 import '../../domain/bloc_exports.dart';
