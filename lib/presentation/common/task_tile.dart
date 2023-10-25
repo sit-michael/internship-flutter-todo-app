@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internship_todos_app/core/app/styles/app_color.dart';
 import 'package:intl/intl.dart';
 
 import '../../domain/bloc_exports.dart';
@@ -19,8 +20,10 @@ class TaskTile extends ExpansionPanelRadio {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // TODO ML: (Ticket FXT-106) Add Fav icon
-
+                      Icon(
+                        task.isFavorite ? Icons.star : Icons.star_outline,
+                        color: AppColor.highlight,
+                      ),
                       const SizedBox(width: 10),
                       Expanded(
                         child: Column(
@@ -46,7 +49,6 @@ class TaskTile extends ExpansionPanelRadio {
                 ),
                 Row(
                   children: [
-                    // TODO ML : (Ticket BUGT-1500) Wrong snackbar message
                     Checkbox(
                       onChanged: !task.isDeleted
                           ? (checked) =>
@@ -119,9 +121,9 @@ class TaskTile extends ExpansionPanelRadio {
     if (checked == null) return;
     late String snackbarText;
     if (checked) {
-      snackbarText = "Resetted Task";
-    } else {
       snackbarText = "Finished Task";
+    } else {
+      snackbarText = "Resetted Task";
     }
     ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar(
       label: snackbarText,

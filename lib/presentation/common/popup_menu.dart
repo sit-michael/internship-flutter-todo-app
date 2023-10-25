@@ -38,7 +38,32 @@ class PopupMenu extends StatelessWidget {
                     ),
                   ),
                 ),
-                // TODO ML: (Ticket FXT-106) Add Favourites function and icon
+                PopupMenuItem(
+                  child: TextButton.icon(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+
+                      onLike();
+                    },
+                    icon: Icon(
+                      task.isFavorite
+                          ? Icons.bookmark_remove
+                          : Icons.bookmark_add_outlined,
+                      color: AppColor.highlight,
+                    ),
+                    label: FittedBox(
+                      child: Text(
+                        task.isFavorite
+                            ? 'Remove from\nFavorite'
+                            : 'Add to\nFavorite',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(color: AppColor.highlight),
+                      ),
+                    ),
+                  ),
+                ),
                 PopupMenuItem(
                   child: TextButton.icon(
                     onPressed: () {
