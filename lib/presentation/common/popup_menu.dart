@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sit_todos/core/app/styles/app_color.dart';
+import 'package:internship_todos_app/core/app/styles/app_color.dart';
 import '../../domain/task/entity/task.dart';
 
 class PopupMenu extends StatelessWidget {

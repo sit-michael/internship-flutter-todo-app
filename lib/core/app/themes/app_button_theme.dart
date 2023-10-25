@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sit_todos/generated/export.dart';
+import 'package:internship_todos_app/generated/export.dart';
 
 import '../styles/app_color.dart';
 import '../styles/app_text_style.dart';

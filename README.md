@@ -1,4 +1,4 @@
-# sit_todos
+# internship_todos_app
 
 A new Flutter project.
 
