@@ -62,7 +62,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
           children: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text('cancel'),
+              child: const Text('Cancel'),
             ),
             ElevatedButton(
               onPressed: () {
@@ -75,7 +75,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 context.read<TaskBloc>().add(AddTaskEvent(task));
                 Navigator.pop(context);
               },
-              child: const Text('add'),
+              child: const Text('Add'),
             ),
           ],
         ),

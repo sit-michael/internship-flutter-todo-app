@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import '../../domain/bloc_exports.dart';
 import '../../domain/task/entity/task.dart';
 import '../main/edit_task/edit_task_screen.dart';
+import 'custom_snackbar.dart';
 import 'popup_menu.dart';
 
 class TaskTile extends ExpansionPanelRadio {
@@ -18,7 +19,8 @@ class TaskTile extends ExpansionPanelRadio {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Icon(task.isFavorite ? Icons.star : Icons.star_outline),
+                      // TODO ML: (Ticket FXT-106) Add Fav icon
+
                       const SizedBox(width: 10),
                       Expanded(
                         child: Column(
@@ -44,11 +46,11 @@ class TaskTile extends ExpansionPanelRadio {
                 ),
                 Row(
                   children: [
+                    // TODO ML : (Ticket BUGT-1500) Wrong snackbar message
                     Checkbox(
                       onChanged: !task.isDeleted
-                          ? (_) => context
-                              .read<TaskBloc>()
-                              .add(UpdateTaskDoneStateEvent(task))
+                          ? (checked) =>
+                              _handleOnChanged(context, checked, task)
                           : null,
                       value: task.isDone,
                     ),
@@ -104,12 +106,26 @@ class TaskTile extends ExpansionPanelRadio {
       context: context,
       isScrollControlled: true,
       builder: (context) => SingleChildScrollView(
-        child: Container(
+        child: Padding(
           padding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: EditTaskScreen(current: task),
         ),
       ),
     );
+  }
+
+  static void _handleOnChanged(BuildContext context, bool? checked, Task task) {
+    if (checked == null) return;
+    late String snackbarText;
+    if (checked) {
+      snackbarText = "Resetted Task";
+    } else {
+      snackbarText = "Finished Task";
+    }
+    ScaffoldMessenger.of(context).showSnackBar(CustomSnackbar(
+      label: snackbarText,
+    ));
+    context.read<TaskBloc>().add(UpdateTaskDoneStateEvent(task));
   }
 }

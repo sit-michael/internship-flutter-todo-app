@@ -1,4 +1,4 @@
-package schwarz.it.udemy_flutter_bloc_tasks
+package schwarz.it.internship_todos_app
 
 import io.flutter.embedding.android.FlutterActivity
 

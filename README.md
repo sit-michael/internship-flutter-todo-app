@@ -1,4 +1,4 @@
-# udemy_flutter_bloc_tasks
+# internship_todos_app
 
 A new Flutter project.
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internship_todos_app/generated/export.dart';
 import '../../../domain/bloc_exports.dart';
 
 import '../../../domain/task/entity/task.dart';
@@ -15,76 +16,78 @@ class EditTaskScreen extends StatefulWidget {
 }
 
 class _EditTaskScreenState extends State<EditTaskScreen> {
-  late final TextEditingController _titleController;
-  late final TextEditingController _descriptionController;
+  late final TextEditingController _controller1;
+  late final TextEditingController _controller2;
   @override
   void initState() {
-    _titleController = TextEditingController(text: widget.current.title);
-    _descriptionController =
-        TextEditingController(text: widget.current.description);
+    //TODO ML: (Ticket BUGT-2325) switch description and title
+    _controller1 = TextEditingController(text: widget.current.description);
+    _controller2 = TextEditingController(text: widget.current.title);
     super.initState();
   }
 
   @override
   void dispose() {
-    _titleController.dispose();
-    _descriptionController.dispose();
+    _controller1.dispose();
+    _controller2.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(children: [
-        const Text('Edit Task', style: TextStyle(fontSize: 24)),
-        const SizedBox(height: 10),
-        TextField(
-          autofocus: true,
-          controller: _titleController,
-          decoration: const InputDecoration(
-            labelText: 'Title',
-            border: OutlineInputBorder(),
+      padding: allPadding24,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Edit Task',
+            style: Theme.of(context).textTheme.headlineMedium,
           ),
-        ),
-        const SizedBox(height: 10),
-        TextField(
-          autofocus: true,
-          controller: _descriptionController,
-          minLines: 3,
-          maxLines: 5,
-          decoration: const InputDecoration(
-            labelText: 'Description',
-            border: OutlineInputBorder(),
+          verticalMargin24,
+          TextField(
+            autofocus: true,
+            controller: _controller1,
+            decoration: const InputDecoration(
+              labelText: 'Title',
+            ),
           ),
-        ),
-        const SizedBox(height: 10),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: const Text('cancel'),
+          const SizedBox(height: 10),
+          TextField(
+            autofocus: true,
+            controller: _controller2,
+            minLines: 3,
+            maxLines: 5,
+            decoration: const InputDecoration(
+              labelText: 'Description',
             ),
-            ElevatedButton(
-              onPressed: () {
-                var editedTask = widget.current.copyWith(
-                  title: _titleController.text,
-                  description: _descriptionController.text,
-                  date: DateTime.now(),
-                  isDone: false,
-                  isDeleted: false,
-                );
-                context
-                    .read<TaskBloc>()
-                    .add(EditTaskEvent(editedTask));
-                Navigator.pop(context);
-              },
-              child: const Text('save'),
-            ),
-          ],
-        ),
-      ]),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Cancel'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  var editedTask = widget.current.copyWith(
+                    title: _controller1.text,
+                    description: _controller2.text,
+                    date: DateTime.now(),
+                    isDone: false,
+                    isDeleted: false,
+                  );
+                  context.read<TaskBloc>().add(EditTaskEvent(editedTask));
+                  Navigator.pop(context);
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
