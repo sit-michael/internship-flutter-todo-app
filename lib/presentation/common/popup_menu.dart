@@ -38,7 +38,7 @@ class PopupMenu extends StatelessWidget {
                     ),
                   ),
                 ),
-                // TODO ML: (Ticket FXT-106) Add Favourites function and icon
+                //TODO(ML): (Ticket FXT-106) Add Favourites function and icon
                 PopupMenuItem(
                   child: TextButton.icon(
                     onPressed: () {

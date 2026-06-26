@@ -25,15 +25,15 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO ML: Add drawer (Ticket FXT-4711)
-    // TODO ML: Add AppBar title (Ticket FXT-5214)
+    //TODO(ML): Add drawer (Ticket FXT-4711)
+    //TODO(ML): Add AppBar title (Ticket FXT-5214)
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.background,
         foregroundColor: AppColor.white,
       ),
       floatingActionButton: _selectedPageIndex == 0
-          // TODO ML: Adjust FAB colour (Ticket BUGT-1734)
+          //TODO(ML): Adjust FAB colour (Ticket BUGT-1734)
 
           ? FloatingActionButton(
               onPressed: () => _addTask(context),

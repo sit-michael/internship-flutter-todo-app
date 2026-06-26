@@ -19,7 +19,7 @@ class TaskTile extends ExpansionPanelRadio {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      // TODO ML: (Ticket FXT-106) Add Fav icon
+                      //TODO(ML): (Ticket FXT-106) Add Fav icon
 
                       const SizedBox(width: 10),
                       Expanded(
@@ -46,7 +46,7 @@ class TaskTile extends ExpansionPanelRadio {
                 ),
                 Row(
                   children: [
-                    // TODO ML : (Ticket BUGT-1500) Wrong snackbar message
+                    //TODO(ML) : (Ticket BUGT-1500) Wrong snackbar message
                     Checkbox(
                       onChanged: !task.isDeleted
                           ? (checked) =>
