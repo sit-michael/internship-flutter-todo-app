@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class VersionLabel extends StatelessWidget {
-  const VersionLabel({Key? key}) : super(key: key);
+  const VersionLabel({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class VersionLabel extends StatelessWidget {
         return Text(
           'Schwarz IT KG\n$versionString',
           textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText1,
+          style: Theme.of(context).textTheme.bodyMedium,
         );
       },
     );

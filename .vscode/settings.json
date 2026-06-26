@@ -10,7 +10,7 @@
     "mason.yaml": "mason-lock.json"
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll": true
+    "source.fixAll": "explicit"
   },
   "[dart]": {
     "editor.formatOnPaste": true,
@@ -34,9 +34,6 @@
   "files.watcherExclude": {
     "**/.fvm": true
   },
-  "dart.flutterSdkPaths": [
-    "/Users/$USER/fvm/versions/stable"
-  ],
   "cSpell.words": [
     "lifa",
     "Lokalise"
