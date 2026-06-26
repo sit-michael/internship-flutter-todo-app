@@ -7,9 +7,9 @@ import '../../../domain/task/entity/task.dart';
 class EditTaskScreen extends StatefulWidget {
   final Task current;
   const EditTaskScreen({
-    Key? key,
+    super.key,
     required this.current,
-  }) : super(key: key);
+  });
 
   @override
   State<EditTaskScreen> createState() => _EditTaskScreenState();
@@ -20,7 +20,7 @@ class _EditTaskScreenState extends State<EditTaskScreen> {
   late final TextEditingController _controller2;
   @override
   void initState() {
-    //TODO ML: (Ticket BUGT-2325) switch description and title
+    //TODO(ML): (Ticket BUGT-2325) switch description and title
     _controller1 = TextEditingController(text: widget.current.description);
     _controller2 = TextEditingController(text: widget.current.title);
     super.initState();

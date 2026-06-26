@@ -18,7 +18,7 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, dynamic>> _pageDetails = [
     {'pageName': const PendingTasksScreen(), 'title': 'Pending Tasks'},
     {'pageName': const CompleteTasksScreen(), 'title': 'Complete Tasks'},
-    //TODO ML: (Ticket FXT-106) Add fav page
+    //TODO(ML): (Ticket FXT-106) Add fav page
   ];
 
   var _selectedPageIndex = 0;
@@ -57,7 +57,7 @@ class _TabsScreenState extends State<TabsScreen> {
             icon: Icon(Icons.done),
             label: 'Completed Task',
           ),
-          //TODO ML: (Ticket FXT-106) Add fav bottombar icon
+          //TODO(ML): (Ticket FXT-106) Add fav bottombar icon
         ],
       ),
     );
